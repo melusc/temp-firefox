@@ -1,30 +1,8 @@
-#!/usr/bin/env node
+import {spawn} from 'node:child_process';
+import {execPath} from 'node:process';
+import {fileURLToPath} from 'node:url';
 
-import {cp, mkdtemp, readFile, realpath, rm} from 'node:fs/promises';
-import {tmpdir} from 'node:os';
-import {join} from 'node:path';
-
-import {parse} from 'dotenv';
-import {execa} from 'execa';
-
-const config = parse<{FIREFOX_FILE: string}>(
-	await readFile(new URL('../.env', import.meta.url)),
-);
-
-const osTemporaryDir = await realpath(tmpdir());
-const profileDir = await mkdtemp(join(osTemporaryDir, 'ff-tmp-'));
-
-// Disable telemetry and similar
-await cp(
-	new URL('../src/user.js', import.meta.url),
-	join(profileDir, 'user.js'),
-);
-
-await execa(config.FIREFOX_FILE, [
-	'-profile',
-	profileDir,
-	'-no-remote',
-	'-new-instance',
-]);
-
-await rm(profileDir, {recursive: true});
+spawn(execPath, [fileURLToPath(new URL('detached.js', import.meta.url))], {
+	detached: true,
+	stdio: 'ignore',
+}).unref();
