@@ -1,9 +1,7 @@
 {
 	"extends": "@lusc/tsconfig",
 	"compilerOptions": {
-		"moduleResolution": "NodeNext",
-		"outDir": "dist",
-		"rootDir": "src"
+		"outDir": "dist"
 	},
 	"include": ["src/*"]
 }
