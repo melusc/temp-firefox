@@ -19,7 +19,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"dotenv": "^16.0.1",
+		"dotenv": "^16.0.2",
 		"execa": "^6.1.0"
 	}
 }
