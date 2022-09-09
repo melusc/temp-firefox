@@ -8,7 +8,7 @@
 	"private": true,
 	"devDependencies": {
 		"@lusc/tsconfig": "^2.0.0",
-		"@types/node": "^18.7.14",
+		"@types/node": "^18.7.16",
 		"prettier": "^2.7.1",
 		"typescript": "^4.8.2",
 		"xo": "^0.52.3"
