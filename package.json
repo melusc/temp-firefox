@@ -7,10 +7,10 @@
 	"license": "MIT",
 	"private": true,
 	"devDependencies": {
-		"@lusc/tsconfig": "^2.0.0",
+		"@lusc/tsconfig": "^2.1.0",
 		"@types/node": "^18.11.18",
 		"prettier": "^2.8.3",
-		"typescript": "^4.9.4",
+		"typescript": "^4.9.5",
 		"xo": "^0.53.1"
 	},
 	"scripts": {
@@ -22,5 +22,5 @@
 		"dotenv": "^16.0.3",
 		"execa": "^6.1.0"
 	},
-	"packageManager": "yarn@3.3.1"
+	"packageManager": "yarn@3.4.1"
 }
