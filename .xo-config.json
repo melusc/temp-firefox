@@ -1,14 +1,6 @@
 {
 	"rules": {
 		"no-mixed-spaces-and-tabs": "off",
-		"@typescript-eslint/indent": "off",
-		"@typescript-eslint/quotes": [
-			"error",
-			"single",
-			{
-				"avoidEscape": true
-			}
-		],
 		"import/order": [
 			"error",
 			{
@@ -16,5 +8,20 @@
 				"warnOnUnassignedImports": true
 			}
 		]
-	}
+	},
+	"overrides": [
+		{
+			"files": ["**/*.ts"],
+			"rules": {
+				"@typescript-eslint/indent": "off",
+				"@typescript-eslint/quotes": [
+					"error",
+					"single",
+					{
+						"avoidEscape": true
+					}
+				]
+			}
+		}
+	]
 }
