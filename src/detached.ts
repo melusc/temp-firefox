@@ -20,11 +20,12 @@ await cp(
 	join(profileDir, 'user.js'),
 );
 
-await execa(config.FIREFOX_FILE, [
-	'-profile',
-	profileDir,
-	'-no-remote',
-	'-new-instance',
-]);
+await execa(
+	config.FIREFOX_FILE,
+	['-profile', profileDir, '-no-remote', '-new-instance'],
+	{
+		stdio: 'inherit',
+	},
+);
 
 await rm(profileDir, {recursive: true});
