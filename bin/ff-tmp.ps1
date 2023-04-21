@@ -1,6 +1,6 @@
 $id = Get-Date -UFormat '+%Y-%m-%dT%H-%M-%SZ'
 $root = Resolve-Path "$PSScriptRoot/.."
-mkdir "$root/out" -Force
+mkdir "$root/out" -Force | Out-Null
 Start-Process node `
 	"$root/dist/detached.js" `
 	-RedirectStandardOutput "$root/out/out-$id.txt" `
