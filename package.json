@@ -8,10 +8,10 @@
 	"private": true,
 	"devDependencies": {
 		"@lusc/tsconfig": "^2.2.0",
-		"@types/node": "^18.16.2",
+		"@types/node": "^18.16.3",
 		"prettier": "^2.8.8",
 		"typescript": "^5.0.4",
-		"xo": "^0.54.1"
+		"xo": "^0.54.2"
 	},
 	"scripts": {
 		"build": "tsc",
@@ -22,5 +22,5 @@
 		"dotenv": "^16.0.3",
 		"execa": "^7.1.1"
 	},
-	"packageManager": "yarn@3.5.0"
+	"packageManager": "yarn@3.5.1"
 }
