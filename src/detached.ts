@@ -1,31 +1,50 @@
-#!/usr/bin/env node
+import {rm} from 'node:fs/promises';
+import {setTimeout} from 'node:timers/promises';
+import {parseArgs} from 'node:util';
 
-import {cp, mkdtemp, readFile, realpath, rm} from 'node:fs/promises';
-import {tmpdir} from 'node:os';
-import {join} from 'node:path';
-
-import {parse} from 'dotenv';
 import {execa} from 'execa';
 
-const config = parse<{FIREFOX_FILE: string}>(
-	await readFile(new URL('../.env', import.meta.url)),
-);
-
-const osTemporaryDir = await realpath(tmpdir());
-const profileDir = await mkdtemp(join(osTemporaryDir, 'ff-tmp-'));
-
-// Disable telemetry and similar
-await cp(
-	new URL('../src/user.js', import.meta.url),
-	join(profileDir, 'user.js'),
-);
+const {
+	values: {'tmp-dir': temporaryDir, 'firefox-path': firefoxPath, xpi},
+} = parseArgs({
+	options: {
+		'tmp-dir': {
+			type: 'string',
+		},
+		'firefox-path': {
+			type: 'string',
+		},
+		xpi: {
+			type: 'string',
+		},
+	},
+});
 
 await execa(
-	config.FIREFOX_FILE,
-	['-profile', profileDir, '-no-remote', '-new-instance'],
+	firefoxPath!,
+	['-profile', temporaryDir!, '-no-remote', '-new-instance', xpi!],
 	{
 		stdio: 'inherit',
 	},
 );
 
-await rm(profileDir, {recursive: true});
+async function exponentialBackoff(fn: () => Promise<void>) {
+	for (let i = 0; i < 5; ++i) {
+		try {
+			// eslint-disable-next-line no-await-in-loop
+			await fn();
+			return;
+		} catch {
+			// prettier-ignore
+			// eslint-disable-next-line no-await-in-loop
+			await setTimeout((2 ** i) * 1000);
+		}
+	}
+
+	// At this point it's not going to work.
+	// Just don't delete the directory
+}
+
+await setTimeout(10e3);
+
+await exponentialBackoff(async () => rm(temporaryDir!, {recursive: true}));

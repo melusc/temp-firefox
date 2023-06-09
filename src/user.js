@@ -40,3 +40,8 @@ user_pref('browser.discovery.enabled', false);
 
 // PREF: Disable "Recommended by Pocket" in Firefox Quantum
 user_pref('browser.newtabpage.activity-stream.feeds.section.topstories', false);
+
+// Enable extension installation without user interaction
+user_pref('xpinstall.signatures.required', false);
+user_pref('extensions.autoDisableScopes', 10);
+user_pref('extensions.enabledScopes', 15);
