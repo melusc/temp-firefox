@@ -9,7 +9,7 @@
 		"start": "node dist/cli.js",
 		"fmt": "prettier -w . && xo --fix",
 		"build": "tsc",
-		"dev": "yarn run esbuild && yarn start"
+		"dev": "yarn run build && yarn start"
 	},
 	"type": "module",
 	"private": true,
