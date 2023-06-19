@@ -1,1 +1,1 @@
-node "$PSScriptRoot/../dist/detached.js"
+node "$PSScriptRoot/../dist/cli.js"
