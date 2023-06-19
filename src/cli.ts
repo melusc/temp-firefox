@@ -4,12 +4,11 @@ import {Buffer} from 'node:buffer';
 import {cp, mkdtemp, realpath, writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {env} from 'node:process';
+import {exit} from 'node:process';
 import {fileURLToPath} from 'node:url';
 import {parseArgs} from 'node:util';
 
-// eslint-disable-next-line import/no-unassigned-import, n/file-extension-in-import
-import 'dotenv/config';
+import {config} from 'dotenv';
 import {execaNode} from 'execa';
 import {z} from 'zod';
 
@@ -24,12 +23,20 @@ const {
 	},
 });
 
-const {FIREFOX_PATH: firefoxPath} = z
+const {
+	parsed: {FIREFOX_PATH: firefoxPath},
+} = z
 	.object({
-		// eslint-disable-next-line @typescript-eslint/naming-convention
-		FIREFOX_PATH: z.string().nonempty(),
+		parsed: z.object({
+			// eslint-disable-next-line @typescript-eslint/naming-convention
+			FIREFOX_PATH: z.string().nonempty(),
+		}),
 	})
-	.parse(env);
+	.parse(
+		config({
+			path: new URL('../.env', import.meta.url),
+		}),
+	);
 
 const osTemporaryDir = await realpath(tmpdir());
 const profileDir = await mkdtemp(join(osTemporaryDir, 'ff-tmp-'));
@@ -81,4 +88,8 @@ if (xpiOutDir) {
 	args.push('--xpi', xpiOutDir);
 }
 
-execaNode(fileURLToPath(detachedPath), args).unref();
+execaNode(fileURLToPath(detachedPath), args, {
+	detached: true,
+}).unref();
+
+exit(0);
