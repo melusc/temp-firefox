@@ -16,7 +16,7 @@
 	"packageManager": "yarn@3.6.0",
 	"devDependencies": {
 		"@lusc/tsconfig": "^2.3.0",
-		"@types/node": "^20.3.1",
+		"@types/node": "^20.3.2",
 		"prettier": "^2.8.8",
 		"typescript": "^5.1.6",
 		"xo": "^0.54.2"
