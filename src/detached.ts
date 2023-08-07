@@ -1,8 +1,10 @@
-import {rm} from 'node:fs/promises';
-import {setTimeout} from 'node:timers/promises';
 import {parseArgs} from 'node:util';
+import assert from 'node:assert';
 
-import {execa} from 'execa';
+import Logger from './log.js';
+import {run} from './run.js';
+
+const logger = new Logger(true);
 
 const {
 	values: {'tmp-dir': temporaryDir, 'firefox-path': firefoxPath, xpi},
@@ -20,31 +22,11 @@ const {
 	},
 });
 
-await execa(
-	firefoxPath!,
-	['-profile', temporaryDir!, '-no-remote', '-new-instance', xpi!],
-	{
-		stdio: 'inherit',
-	},
-);
+logger.log('--tmp-dir="%s"', temporaryDir);
+logger.log('--xpi="%s"', xpi);
+logger.log('--firefox-path="%s"', firefoxPath);
 
-async function exponentialBackoff(fn: () => Promise<void>) {
-	for (let i = 0; i < 5; ++i) {
-		try {
-			// eslint-disable-next-line no-await-in-loop
-			await fn();
-			return;
-		} catch {
-			// prettier-ignore
-			// eslint-disable-next-line no-await-in-loop
-			await setTimeout((2 ** i) * 1000);
-		}
-	}
+assert(temporaryDir);
+assert(firefoxPath);
 
-	// At this point it's not going to work.
-	// Just don't delete the directory
-}
-
-await setTimeout(10e3);
-
-await exponentialBackoff(async () => rm(temporaryDir!, {recursive: true}));
+await run(firefoxPath, temporaryDir, xpi, logger);

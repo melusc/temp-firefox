@@ -12,11 +12,18 @@ import {config} from 'dotenv';
 import {execaNode} from 'execa';
 import {z} from 'zod';
 
+import {run} from './run.js';
+import Logger from './log.js';
+
 const {
-	values: {'no-adblock': noAdblock},
+	values: {'no-adblock': noAdblock, detached},
 } = parseArgs({
 	options: {
 		'no-adblock': {
+			type: 'boolean',
+			default: false,
+		},
+		detached: {
 			type: 'boolean',
 			default: false,
 		},
@@ -39,12 +46,12 @@ const {
 	);
 
 const osTemporaryDir = await realpath(tmpdir());
-const profileDir = await mkdtemp(join(osTemporaryDir, 'ff-tmp-'));
+const temporaryProfileDir = await mkdtemp(join(osTemporaryDir, 'ff-tmp-'));
 
 // Disable telemetry and similar
 await cp(
 	new URL('../src/user.js', import.meta.url),
-	join(profileDir, 'user.js'),
+	join(temporaryProfileDir, 'user.js'),
 );
 
 let xpiOutDir: string | undefined;
@@ -76,20 +83,33 @@ if (!noAdblock) {
 	const xpiRequest = await fetch(latest.file.url);
 	const xpi = await xpiRequest.arrayBuffer();
 
-	xpiOutDir = join(profileDir, 'ublock.temp.xpi');
+	xpiOutDir = join(temporaryProfileDir, 'ublock.temp.xpi');
 	await writeFile(xpiOutDir, Buffer.from(xpi));
 }
 
-const detachedPath = new URL('detached.js', import.meta.url);
+if (detached) {
+	const detachedPath = new URL('detached.js', import.meta.url);
 
-const args = ['--tmp-dir', profileDir, '--firefox-path', firefoxPath];
+	const args = [
+		'--tmp-dir',
+		temporaryProfileDir,
+		'--firefox-path',
+		firefoxPath,
+	];
 
-if (xpiOutDir) {
-	args.push('--xpi', xpiOutDir);
+	if (xpiOutDir) {
+		args.push('--xpi', xpiOutDir);
+	}
+
+	execaNode(fileURLToPath(detachedPath), args, {
+		detached: true,
+	}).unref();
+
+	exit(0);
+} else {
+	const logger = new Logger(false);
+	logger.log('firefoxPath="%s"', firefoxPath);
+	logger.log('tmpProfileDir="%s"', temporaryProfileDir);
+	logger.log('xpiOutDir="%s"', xpiOutDir);
+	await run(firefoxPath, temporaryProfileDir, xpiOutDir, logger);
 }
-
-execaNode(fileURLToPath(detachedPath), args, {
-	detached: true,
-}).unref();
-
-exit(0);
