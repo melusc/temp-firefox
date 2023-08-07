@@ -2,7 +2,7 @@
 	"name": "ff-tmp",
 	"version": "1.0.0",
 	"main": "index.js",
-	"repository": "https://github.com/melusc/temp-firefox",
+	"repository": "https://github.com/melusc/ff-tmp",
 	"author": "Luca <lusc.dev@gmail.com>",
 	"license": "MIT",
 	"scripts": {
