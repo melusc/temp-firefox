@@ -15,7 +15,7 @@
 	"private": true,
 	"packageManager": "yarn@3.6.3",
 	"devDependencies": {
-		"@lusc/tsconfig": "^2.3.0",
+		"@lusc/tsconfig": "^3.0.0",
 		"@types/node": "^20.5.6",
 		"prettier": "^3.0.2",
 		"typescript": "^5.1.6",
