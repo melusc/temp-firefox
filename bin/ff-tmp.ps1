@@ -1,1 +1,1 @@
-node "$PSScriptRoot/../dist/cli.js" @args
+yarn start @args

@@ -9,7 +9,7 @@
 		"node": "^20.6.0"
 	},
 	"scripts": {
-		"start": "node dist/cli.js",
+		"start": "node --env-file=.env dist/cli.js",
 		"fmt": "prettier -w . && xo --fix",
 		"build": "tsc",
 		"dev": "yarn run build && yarn start"
