@@ -22,6 +22,8 @@ export default class Logger {
 		);
 		this.#logFile = createWriteStream(logFilePath);
 		this.#detached = detached;
+
+		this.log('detached=%s', detached);
 	}
 
 	log(message: string, ...parameters: unknown[]) {
