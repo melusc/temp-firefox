@@ -4,11 +4,10 @@ import {Buffer} from 'node:buffer';
 import {cp, mkdtemp, realpath, writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {exit} from 'node:process';
+import {env, exit} from 'node:process';
 import {fileURLToPath} from 'node:url';
 import {parseArgs} from 'node:util';
 
-import {config} from 'dotenv';
 import {execaNode} from 'execa';
 import {z} from 'zod';
 
@@ -30,20 +29,12 @@ const {
 	},
 });
 
-const {
-	parsed: {FIREFOX_PATH: firefoxPath},
-} = z
+const {FIREFOX_PATH: firefoxPath} = z
 	.object({
-		parsed: z.object({
-			// eslint-disable-next-line @typescript-eslint/naming-convention
-			FIREFOX_PATH: z.string().nonempty(),
-		}),
+		// eslint-disable-next-line @typescript-eslint/naming-convention
+		FIREFOX_PATH: z.string().nonempty(),
 	})
-	.parse(
-		config({
-			path: new URL('../.env', import.meta.url),
-		}),
-	);
+	.parse(env);
 
 const osTemporaryDir = await realpath(tmpdir());
 const temporaryProfileDir = await mkdtemp(join(osTemporaryDir, 'ff-tmp-'));
