@@ -16,7 +16,7 @@
 	},
 	"type": "module",
 	"private": true,
-	"packageManager": "yarn@3.6.4",
+	"packageManager": "yarn@4.0.0",
 	"devDependencies": {
 		"@lusc/tsconfig": "^4.0.0",
 		"@types/node": "^20.8.2",
