@@ -186,7 +186,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.8.2":
+"@types/node@npm:^20.8.8":
   version: 20.8.8
   resolution: "@types/node@npm:20.8.8"
   dependencies:
@@ -1448,12 +1448,12 @@ __metadata:
   resolution: "ff-tmp@workspace:."
   dependencies:
     "@lusc/tsconfig": "npm:^4.0.0"
-    "@types/node": "npm:^20.8.2"
+    "@types/node": "npm:^20.8.8"
     execa: "npm:^8.0.1"
     prettier: "npm:^3.0.3"
     typescript: "npm:^5.2.2"
     xo: "npm:^0.56.0"
-    zod: "npm:^3.22.3"
+    zod: "npm:^3.22.4"
   languageName: unknown
   linkType: soft
 
@@ -3745,7 +3745,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.22.3":
+"zod@npm:^3.22.4":
   version: 3.22.4
   resolution: "zod@npm:3.22.4"
   checksum: 7578ab283dac0eee66a0ad0fc4a7f28c43e6745aadb3a529f59a4b851aa10872b3890398b3160f257f4b6817b4ce643debdda4fb21a2c040adda7862cab0a587
