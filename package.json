@@ -6,7 +6,7 @@
 	"author": "Luca <lusc.dev@gmail.com>",
 	"license": "MIT",
 	"engines": {
-		"node": "^20.8.1"
+		"node": "^20.9.0"
 	},
 	"scripts": {
 		"start": "node --env-file=.env dist/cli.js",
@@ -16,10 +16,10 @@
 	},
 	"type": "module",
 	"private": true,
-	"packageManager": "yarn@4.0.0",
+	"packageManager": "yarn@4.0.1",
 	"devDependencies": {
 		"@lusc/tsconfig": "^4.0.0",
-		"@types/node": "^20.8.8",
+		"@types/node": "^20.8.9",
 		"prettier": "^3.0.3",
 		"typescript": "^5.2.2",
 		"xo": "^0.56.0"
