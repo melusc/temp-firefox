@@ -186,12 +186,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.10.4":
-  version: 20.10.4
-  resolution: "@types/node@npm:20.10.4"
+"@types/node@npm:^20.11.6":
+  version: 20.11.6
+  resolution: "@types/node@npm:20.11.6"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 2c8b70cba731eb2ae3ae046daa74903bfcbb0e7b9196da767e5895054f6d252296ae7a04fb1dbbcb53bb004c4c658c05eaea2731bc9e2dd9e08f7e88d672f563
+  checksum: 922bc1e78076bb79fd168902c80321b54487181e3be3386e183fc535d102d91c8902da25148eaec841410fab7fb872fd4a93ec9ac9299cedf0ebcbf16b442aa1
   languageName: node
   linkType: hard
 
@@ -1448,9 +1448,9 @@ __metadata:
   resolution: "ff-tmp@workspace:."
   dependencies:
     "@lusc/tsconfig": "npm:^4.0.0"
-    "@types/node": "npm:^20.10.4"
+    "@types/node": "npm:^20.11.6"
     execa: "npm:^8.0.1"
-    prettier: "npm:^3.1.1"
+    prettier: "npm:^3.2.4"
     typescript: "npm:^5.3.3"
     xo: "npm:^0.56.0"
     zod: "npm:^3.22.4"
@@ -2897,12 +2897,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.0.0, prettier@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "prettier@npm:3.1.1"
+"prettier@npm:^3.0.0, prettier@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "prettier@npm:3.2.4"
   bin:
     prettier: bin/prettier.cjs
-  checksum: facc944ba20e194ff4db765e830ffbcb642803381f0d2033ed397e79904fa4ccc877dc25ad68f42d36985c01d051c990ca1b905fb83d2d7d65fe69e4386fa1a3
+  checksum: 88dfeb78ac6096522c9a5b81f1413d875f568420d9bb6a5e5103527912519b993f2bcdcac311fcff5718d5869671d44e4f85827d3626f3a6ce32b9abc65d88e0
   languageName: node
   linkType: hard
 
