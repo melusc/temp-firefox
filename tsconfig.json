@@ -1,7 +1,7 @@
 {
 	"extends": "@lusc/tsconfig",
 	"compilerOptions": {
-		"outDir": "dist"
+		"outDir": "dist",
 	},
-	"include": ["src/**/*"]
+	"include": ["src/**/*"],
 }
