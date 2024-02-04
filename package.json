@@ -16,11 +16,11 @@
 	},
 	"type": "module",
 	"private": true,
-	"packageManager": "yarn@4.0.2",
+	"packageManager": "yarn@4.1.0",
 	"devDependencies": {
 		"@lusc/tsconfig": "^4.0.0",
-		"@types/node": "^20.11.6",
-		"prettier": "^3.2.4",
+		"@types/node": "^20.11.16",
+		"prettier": "^3.2.5",
 		"typescript": "^5.3.3",
 		"xo": "^0.56.0"
 	},
