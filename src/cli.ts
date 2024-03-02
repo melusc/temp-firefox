@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 import {Buffer} from 'node:buffer';
-import {cp, mkdtemp, realpath, writeFile} from 'node:fs/promises';
+import {
+cp, mkdtemp, realpath, writeFile,
+} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {env, exit} from 'node:process';
@@ -36,16 +38,18 @@ const {FIREFOX_PATH: firefoxPath} = z
 	})
 	.parse(env);
 
-const osTemporaryDir = await realpath(tmpdir());
-const temporaryProfileDir = await mkdtemp(join(osTemporaryDir, 'ff-tmp-'));
+const osTemporaryDirectory = await realpath(tmpdir());
+const temporaryProfileDirectory = await mkdtemp(
+	join(osTemporaryDirectory, 'ff-tmp-'),
+);
 
 // Disable telemetry and similar
 await cp(
 	new URL('../src/user.js', import.meta.url),
-	join(temporaryProfileDir, 'user.js'),
+	join(temporaryProfileDirectory, 'user.js'),
 );
 
-let xpiOutDir: string | undefined;
+let xpiOutDirectory: string | undefined;
 
 if (!noAdblock) {
 	const versionRequest = await fetch(
@@ -74,25 +78,25 @@ if (!noAdblock) {
 	const xpiRequest = await fetch(latest.file.url);
 	const xpi = await xpiRequest.arrayBuffer();
 
-	xpiOutDir = join(temporaryProfileDir, 'ublock.temp.xpi');
-	await writeFile(xpiOutDir, Buffer.from(xpi));
+	xpiOutDirectory = join(temporaryProfileDirectory, 'ublock.temp.xpi');
+	await writeFile(xpiOutDirectory, Buffer.from(xpi));
 }
 
 if (detached) {
 	const detachedPath = new URL('detached.js', import.meta.url);
 
-	const args = [
+	const arguments_ = [
 		'--tmp-dir',
-		temporaryProfileDir,
+		temporaryProfileDirectory,
 		'--firefox-path',
 		firefoxPath,
 	];
 
-	if (xpiOutDir) {
-		args.push('--xpi', xpiOutDir);
+	if (xpiOutDirectory) {
+		arguments_.push('--xpi', xpiOutDirectory);
 	}
 
-	execaNode(fileURLToPath(detachedPath), args, {
+	execaNode(fileURLToPath(detachedPath), arguments_, {
 		detached: true,
 	}).unref();
 
@@ -100,7 +104,7 @@ if (detached) {
 } else {
 	const logger = new Logger(false);
 	logger.log('firefoxPath="%s"', firefoxPath);
-	logger.log('tmpProfileDir="%s"', temporaryProfileDir);
-	logger.log('xpiOutDir="%s"', xpiOutDir);
-	await run(firefoxPath, temporaryProfileDir, xpiOutDir, logger);
+	logger.log('tmpProfileDir="%s"', temporaryProfileDirectory);
+	logger.log('xpiOutDir="%s"', xpiOutDirectory);
+	await run(firefoxPath, temporaryProfileDirectory, xpiOutDirectory, logger);
 }
