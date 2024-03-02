@@ -7,7 +7,7 @@ import type Logger from './log.js';
 
 export async function run(
 	firefoxPath: string,
-	temporaryDir: string,
+	temporaryDirectory: string,
 	xpi: string | undefined,
 	logger: Logger,
 ) {
@@ -17,7 +17,7 @@ export async function run(
 		firefoxPath,
 		[
 			'-profile',
-			temporaryDir,
+			temporaryDirectory,
 			'-no-remote',
 			'-new-instance',
 			...(xpi ? [xpi] : []),
@@ -29,12 +29,12 @@ export async function run(
 
 	logger.log('Firefox has closed');
 
-	async function exponentialBackoff(fn: () => Promise<void>) {
+	async function exponentialBackoff(function_: () => Promise<void>) {
 		for (let i = 0; i < 5; ++i) {
 			try {
 				logger.log('Calling function');
 				// eslint-disable-next-line no-await-in-loop
-				await fn();
+				await function_();
 				logger.log('Function call success on try %s', i);
 				return;
 			} catch {
@@ -53,7 +53,9 @@ export async function run(
 	}
 
 	logger.log('Starting exponential backoff');
-	await exponentialBackoff(async () => rm(temporaryDir, {recursive: true}));
+	await exponentialBackoff(async () =>
+		rm(temporaryDirectory, {recursive: true}),
+	);
 	logger.log('Finished exponential backoff');
 
 	logger.done();

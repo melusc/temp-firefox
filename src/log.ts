@@ -2,8 +2,8 @@ import {createWriteStream, type WriteStream} from 'node:fs';
 import {mkdir} from 'node:fs/promises';
 import {formatWithOptions} from 'node:util';
 
-const logOutDir = new URL('../logs/', import.meta.url);
-await mkdir(logOutDir, {recursive: true});
+const logsDirectory = new URL('../logs/', import.meta.url);
+await mkdir(logsDirectory, {recursive: true});
 
 /*
  * It seems that when the current node process is detached it can handle
@@ -18,7 +18,7 @@ export default class Logger {
 	constructor(detached: boolean) {
 		const logFilePath = new URL(
 			`ff-tmp-${new Date().toISOString().replaceAll(':', '_')}.log`,
-			logOutDir,
+			logsDirectory,
 		);
 		this.#logFile = createWriteStream(logFilePath);
 		this.#detached = detached;
