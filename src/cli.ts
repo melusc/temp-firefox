@@ -96,6 +96,7 @@ if (detached) {
 		arguments_.push('--xpi', xpiOutDirectory);
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 	execaNode(fileURLToPath(detachedPath), arguments_, {
 		detached: true,
 	}).unref();
