@@ -13,6 +13,7 @@ export async function run(
 ) {
 	logger.log('Starting Firefox');
 
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 	await execa(
 		firefoxPath,
 		[
