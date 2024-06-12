@@ -217,12 +217,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.12.11":
-  version: 20.12.11
-  resolution: "@types/node@npm:20.12.11"
+"@types/node@npm:^20.14.2":
+  version: 20.14.2
+  resolution: "@types/node@npm:20.14.2"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/efaa7b08c50ba6e6982ac7d531ba08d5935539ba76e954807df1ff9382a319ead7e003ccaca5ad7cf33ecf53f212507f7c1f2794bd2ff52df6365fef21f6e1fb
+  checksum: 10c0/2d86e5f2227aaa42212e82ea0affe72799111b888ff900916376450b02b09b963ca888b20d9c332d8d2b833ed4781987867a38eaa2e4863fa8439071468b0a6f
   languageName: node
   linkType: hard
 
@@ -1501,9 +1501,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:^9.0.2":
-  version: 9.0.2
-  resolution: "execa@npm:9.0.2"
+"execa@npm:^9.2.0":
+  version: 9.2.0
+  resolution: "execa@npm:9.2.0"
   dependencies:
     "@sindresorhus/merge-streams": "npm:^4.0.0"
     cross-spawn: "npm:^7.0.3"
@@ -1517,7 +1517,7 @@ __metadata:
     signal-exit: "npm:^4.1.0"
     strip-final-newline: "npm:^4.0.0"
     yoctocolors: "npm:^2.0.0"
-  checksum: 10c0/8870320b16bfb6a6d39ddbc3907bc04f2b1e30e385a7c24b5608f2ffd03d0901245a233c42012a002a4a74b9fbda0372bf787d1bcf208bf8921cff11d6bd881f
+  checksum: 10c0/339e69bd01bfdc032122ef18d412ccda4386c7752b864607c2e8683a1531b4aab436744aeacee548e1be239adb2b52888da64ffd761e7e22f56f8f14cf66e4a7
   languageName: node
   linkType: hard
 
@@ -1576,9 +1576,9 @@ __metadata:
   resolution: "ff-tmp@workspace:."
   dependencies:
     "@lusc/tsconfig": "npm:^4.1.0"
-    "@types/node": "npm:^20.12.11"
-    execa: "npm:^9.0.2"
-    prettier: "npm:^3.2.5"
+    "@types/node": "npm:^20.14.2"
+    execa: "npm:^9.2.0"
+    prettier: "npm:^3.3.2"
     typescript: "npm:^5.4.5"
     xo: "npm:^0.58.0"
     zod: "npm:^3.23.8"
@@ -3066,12 +3066,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.2.5":
-  version: 3.2.5
-  resolution: "prettier@npm:3.2.5"
+"prettier@npm:^3.2.5, prettier@npm:^3.3.2":
+  version: 3.3.2
+  resolution: "prettier@npm:3.3.2"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/ea327f37a7d46f2324a34ad35292af2ad4c4c3c3355da07313339d7e554320f66f65f91e856add8530157a733c6c4a897dc41b577056be5c24c40f739f5ee8c6
+  checksum: 10c0/39ed27d17f0238da6dd6571d63026566bd790d3d0edac57c285fbab525982060c8f1e01955fe38134ab10f0951a6076da37f015db8173c02f14bc7f0803a384c
   languageName: node
   linkType: hard
 
