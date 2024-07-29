@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint-disable n/no-unsupported-features/node-builtins */
-
 import {Buffer} from 'node:buffer';
 import {
 cp, mkdtemp, realpath, writeFile,
