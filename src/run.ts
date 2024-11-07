@@ -30,20 +30,19 @@ export async function run(
 	logger.log('Firefox has closed');
 
 	async function exponentialBackoff(function_: () => Promise<void>) {
-		for (let i = 0; i < 5; ++i) {
+		for (let index = 0; index < 5; ++index) {
 			try {
 				logger.log('Calling function');
-				// eslint-disable-next-line no-await-in-loop
+
 				await function_();
-				logger.log('Function call success on try %s', i);
+				logger.log('Function call success on try %s', index);
 				return;
 			} catch {
 				// prettier-ignore
-				const delay = (2 ** i) * 1000;
+				const delay = (2 ** index) * 1000;
 
 				logger.log('Backing off for %ss', delay);
 
-				// eslint-disable-next-line no-await-in-loop
 				await setTimeout(delay);
 			}
 		}
