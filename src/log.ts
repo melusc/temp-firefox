@@ -45,6 +45,6 @@ export default class Logger {
 	}
 
 	done() {
-		this.#logFile?.close();
+		this.#logFile.close();
 	}
 }

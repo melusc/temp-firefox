@@ -1,11 +1,7 @@
-#!/usr/bin/env node
-
 import {Buffer} from 'node:buffer';
-import {
-cp, mkdtemp, realpath, writeFile,
-} from 'node:fs/promises';
+import {cp, mkdtemp, realpath, writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
-import {join} from 'node:path';
+import path from 'node:path';
 import {env, exit} from 'node:process';
 import {fileURLToPath} from 'node:url';
 import {parseArgs} from 'node:util';
@@ -33,20 +29,19 @@ const {
 
 const {FIREFOX_PATH: firefoxPath} = z
 	.object({
-		// eslint-disable-next-line @typescript-eslint/naming-convention
-		FIREFOX_PATH: z.string().nonempty(),
+		FIREFOX_PATH: z.string().min(1),
 	})
 	.parse(env);
 
 const osTemporaryDirectory = await realpath(tmpdir());
 const temporaryProfileDirectory = await mkdtemp(
-	join(osTemporaryDirectory, 'ff-tmp-'),
+	path.join(osTemporaryDirectory, 'ff-tmp-'),
 );
 
 // Disable telemetry and similar
 await cp(
 	new URL('../src/user.js', import.meta.url),
-	join(temporaryProfileDirectory, 'user.js'),
+	path.join(temporaryProfileDirectory, 'user.js'),
 );
 
 let xpiOutDirectory: string | undefined;
@@ -78,7 +73,7 @@ if (!noAdblock) {
 	const xpiRequest = await fetch(latest.file.url);
 	const xpi = await xpiRequest.arrayBuffer();
 
-	xpiOutDirectory = join(temporaryProfileDirectory, 'ublock.temp.xpi');
+	xpiOutDirectory = path.join(temporaryProfileDirectory, 'ublock.temp.xpi');
 	await writeFile(xpiOutDirectory, Buffer.from(xpi));
 }
 
