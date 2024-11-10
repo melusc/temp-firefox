@@ -18,7 +18,7 @@
 	"private": true,
 	"packageManager": "yarn@4.5.1",
 	"devDependencies": {
-		"@lusc/eslint-config": "^1.0.1",
+		"@lusc/eslint-config": "^2.0.2",
 		"@lusc/tsconfig": "^5.1.0",
 		"@types/node": "^22.8.5",
 		"eslint": "^9.14.0",

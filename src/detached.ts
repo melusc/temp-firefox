@@ -1,5 +1,5 @@
-import {parseArgs} from 'node:util';
 import assert from 'node:assert';
+import {parseArgs} from 'node:util';
 
 import Logger from './log.js';
 import {run} from './run.js';

@@ -9,8 +9,8 @@ import {parseArgs} from 'node:util';
 import {execaNode} from 'execa';
 import {z} from 'zod';
 
-import {run} from './run.js';
 import Logger from './log.js';
+import {run} from './run.js';
 
 const {
 	values: {'no-adblock': noAdblock, detached},
