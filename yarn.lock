@@ -149,9 +149,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lusc/eslint-config@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "@lusc/eslint-config@npm:2.0.2"
+"@lusc/eslint-config@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "@lusc/eslint-config@npm:2.0.4"
   dependencies:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.4.1"
     "@eslint/js": "npm:^9.14.0"
@@ -164,7 +164,7 @@ __metadata:
     globals: "npm:^15.12.0"
     typescript: "npm:^5.6.3"
     typescript-eslint: "npm:^8.13.0"
-  checksum: 10c0/c3ab654ebf59daab9f1b656c33922603a706cfac36a0de9a6cf7814f01ac7d1995dd3e891deb21cac12fd78d33cf8f47ee1073ac2b24026a745bd2e7e369017f
+  checksum: 10c0/fca27440280cabfb8ce45f19dfeaabf51a17bffd481f9738c728d2984f5056ec1e241861b592de9984ce74b9b4ce8251e532a087f5fce836c3331be2f617e943
   languageName: node
   linkType: hard
 
@@ -237,12 +237,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.8.5":
-  version: 22.8.5
-  resolution: "@types/node@npm:22.8.5"
+"@types/node@npm:^22.9.0":
+  version: 22.9.0
+  resolution: "@types/node@npm:22.9.0"
   dependencies:
     undici-types: "npm:~6.19.8"
-  checksum: 10c0/5e43553026c83f18bfa381d35c8fd608e69d12d0f0fe4601e8bb98b651a3b240be9d66c1f2f4decdbebb41d55b18e89238b02f3992d820d89801b9b3625ba8ab
+  checksum: 10c0/3f46cbe0a49bab4ba30494025e4c8a6e699b98ac922857aa1f0209ce11a1313ee46e6808b8f13fe5b8b960a9d7796b77c8d542ad4e9810e85ef897d5593b5d51
   languageName: node
   linkType: hard
 
@@ -967,9 +967,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ff-tmp@workspace:."
   dependencies:
-    "@lusc/eslint-config": "npm:^2.0.2"
+    "@lusc/eslint-config": "npm:^2.0.4"
     "@lusc/tsconfig": "npm:^5.1.0"
-    "@types/node": "npm:^22.8.5"
+    "@types/node": "npm:^22.9.0"
     eslint: "npm:^9.14.0"
     execa: "npm:^9.5.1"
     prettier: "npm:^3.3.3"
