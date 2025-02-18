@@ -3,6 +3,7 @@ import {mkdir} from 'node:fs/promises';
 import {formatWithOptions} from 'node:util';
 
 const logsDirectory = new URL('../logs/', import.meta.url);
+// eslint-disable-next-line security/detect-non-literal-fs-filename
 await mkdir(logsDirectory, {recursive: true});
 
 /*
@@ -20,6 +21,7 @@ export default class Logger {
 			`ff-tmp-${new Date().toISOString().replaceAll(':', '_')}.log`,
 			logsDirectory,
 		);
+		// eslint-disable-next-line security/detect-non-literal-fs-filename
 		this.#logFile = createWriteStream(logFilePath);
 		this.#detached = detached;
 

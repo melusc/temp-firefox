@@ -33,6 +33,7 @@ const {FIREFOX_PATH: firefoxPath} = z
 	})
 	.parse(env);
 
+// eslint-disable-next-line security/detect-non-literal-fs-filename
 const osTemporaryDirectory = await realpath(tmpdir());
 const temporaryProfileDirectory = await mkdtemp(
 	path.join(osTemporaryDirectory, 'ff-tmp-'),
@@ -74,6 +75,7 @@ if (!noAdblock) {
 	const xpi = await xpiRequest.arrayBuffer();
 
 	xpiOutDirectory = path.join(temporaryProfileDirectory, 'ublock.temp.xpi');
+	// eslint-disable-next-line security/detect-non-literal-fs-filename
 	await writeFile(xpiOutDirectory, Buffer.from(xpi));
 }
 
