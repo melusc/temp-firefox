@@ -26,7 +26,7 @@ logger.log('--tmp-dir="%s"', temporaryDirectory);
 logger.log('--xpi="%s"', xpi);
 logger.log('--firefox-path="%s"', firefoxPath);
 
-assert(temporaryDirectory);
-assert(firefoxPath);
+assert.ok(temporaryDirectory);
+assert.ok(firefoxPath);
 
 await run(firefoxPath, temporaryDirectory, xpi, logger);
